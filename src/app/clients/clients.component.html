@@ -1,0 +1,23 @@
+<h2>Clients</h2>
+<app-client-search></app-client-search>
+<div>
+  <h3>Add Client</h3>
+  <div>
+  <label>First Name:
+    <input #firstName />
+  </label>
+  </div>
+  <div>
+    <label>Last Name:
+      <input #lastName />
+    </label>
+  </div>
+  <div>
+    <label>Email:
+      <input #email />
+    </label>
+  </div>
+  <button (click)="addClient(firstName.value, lastName.value, email.value)">
+    Add Client
+  </button>
+</div>
