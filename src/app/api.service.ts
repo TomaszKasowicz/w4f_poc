@@ -1,4 +1,4 @@
-import { Client } from './model';
+import { Client, MainReservation } from './model';
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable, throwError, of } from 'rxjs';
@@ -54,6 +54,7 @@ export class APIService {
   }
 
   addClient(client: Client): Observable<Client> {
+    console.log(client);
     return this.http.post<Client>(this.clientsUrl, client, httpOptions).pipe(
       tap((clientTap: Client) => console.log(`addClient: ${clientTap.id}: ${clientTap.lastName}`)),
       catchError(this.handleError<Client>('addClient'))
@@ -66,9 +67,25 @@ export class APIService {
     );
   }
 
+  addMainReservation(res: MainReservation): Observable<MainReservation> {
+    console.log(res);
+    return this.http.post<MainReservation>(this.mainReservationsUrl, res, httpOptions).pipe(
+      tap(restap => console.log(restap)),
+      catchError(this.handleError<MainReservation>(`addMainReservation`))
+    );
+  }
+
+  serachReservationsByClientId(client_id: number): Observable<MainReservation[]> {
+    const url = `${this.mainReservationsUrl}/?client_id=${client_id}`;
+    return this.http.get<MainReservation[]>(url, httpOptions).pipe(
+      tap(res => console.log(res)),
+      catchError(this.handleError<MainReservation[]>(`searchMainReservationByClientId ${client_id}`))
+    );
+  }
+
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      console.error(error); // log to console instead
+      console.log(error); // log to console instead
       return of(result as T);
     };
   }

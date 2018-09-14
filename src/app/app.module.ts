@@ -8,13 +8,17 @@ import { AppComponent } from './app.component';
 import { ClientsComponent } from './clients/clients.component';
 import { ClientDetailsComponent } from './client-details/client-details.component';
 import { ClientSearchComponent } from './client-search/client-search.component';
+import { MainReservationComponent } from './main-reservation/main-reservation.component';
+import { AddAssetReservationComponent } from './add-asset-reservation/add-asset-reservation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ClientsComponent,
     ClientDetailsComponent,
-    ClientSearchComponent
+    ClientSearchComponent,
+    MainReservationComponent,
+    AddAssetReservationComponent
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,25 @@
-<p>
-  client-details works!
-</p>
+<div *ngIf="client">
+  <h2>{{client.lastName}} {{client.firstName}} Details</h2>
+  <div>
+    <h4>Add new Main Reservation</h4>
+    <label>Info:
+      <input #info />
+    </label>
+    <label>Start Date:
+        <input #date type="date" [value]="today()" />
+    </label>
+    <button (click)="createNewReservation(info.value, date.value)">Add New Reservation</button>
+  </div>
+  <div>
+    <table>
+      <thead>
+        <h3>Main Reservations</h3>
+      </thead>
+      <tbody>
+      <tr *ngFor="let mainReservation of mainReservations" style="border: 1px solid black">
+          <td><app-main-reservation [mainReservation]="mainReservation"></app-main-reservation></td>
+      </tr>
+    </tbody>
+    </table>
+  </div>
+</div>

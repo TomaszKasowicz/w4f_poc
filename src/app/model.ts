@@ -25,20 +25,24 @@ export class Client {
   firstName: string;
   lastName: string;
   email: string;
-  mainReservations: Object;
+  mainReservations: number[];
 }
 
 export class MainReservation {
   id: number;
+  client_id: number;
   info: string;
-  assetReservations: AssetReservation[];
+  date: string;
+  assetReservations: number[];
 }
 
 export class AssetReservation {
   id: number;
+  mainReservationId: number;
   info: string;
   type: ReservationTypes;
   unit: ReservationUnits;
+  slots: number;
 }
 
 export class BoardReservation extends AssetReservation {

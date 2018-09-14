@@ -1,0 +1,9 @@
+<div *ngIf="mainReservation">
+  <h3>{{mainReservation.date}} - {{mainReservation.info}}</h3>
+  <div>
+    <button (click)="addAssetReservation()">Add Asset Reservation</button>
+  </div>
+  <div *ngIf="showAssetReservationCreateComponent">
+    <app-add-a
+  </div>
+</div>
